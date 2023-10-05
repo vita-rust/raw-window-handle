@@ -28,6 +28,7 @@ mod haiku;
 mod redox;
 mod uikit;
 mod unix;
+mod vita;
 mod web;
 mod windows;
 
@@ -40,6 +41,7 @@ pub use unix::{
     DrmDisplayHandle, DrmWindowHandle, GbmDisplayHandle, GbmWindowHandle, WaylandDisplayHandle,
     WaylandWindowHandle, XcbDisplayHandle, XcbWindowHandle, XlibDisplayHandle, XlibWindowHandle,
 };
+pub use vita::{VitaDisplayHandle, VitaWindowHandle};
 pub use web::{WebDisplayHandle, WebWindowHandle};
 pub use windows::{Win32WindowHandle, WinRtWindowHandle, WindowsDisplayHandle};
 
@@ -174,6 +176,11 @@ pub enum RawWindowHandle {
     /// ## Availability Hints
     /// This variant is used on HaikuOS.
     Haiku(HaikuWindowHandle),
+    /// A raw window handle for Sony Playstation Vita.
+    ///
+    /// ## Availability Hints
+    /// This variant is used on Sony Playstation Vita.
+    Vita(VitaWindowHandle),
 }
 
 /// Display that wraps around a raw display handle.
@@ -304,4 +311,9 @@ pub enum RawDisplayHandle {
     /// ## Availability Hints
     /// This variant is used on HaikuOS.
     Haiku(HaikuDisplayHandle),
+    /// A raw display handle for Sony Playstation Vita.
+    ///
+    /// ## Availability Hints
+    /// This variant is used on Sony Playstation Vita.
+    Vita(VitaDisplayHandle),
 }
