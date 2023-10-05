@@ -40,6 +40,7 @@ mod haiku;
 mod redox;
 mod uikit;
 mod unix;
+mod vita;
 mod web;
 mod windows;
 
@@ -53,6 +54,7 @@ pub use unix::{
     DrmDisplayHandle, DrmWindowHandle, GbmDisplayHandle, GbmWindowHandle, WaylandDisplayHandle,
     WaylandWindowHandle, XcbDisplayHandle, XcbWindowHandle, XlibDisplayHandle, XlibWindowHandle,
 };
+pub use vita::{VitaDisplayHandle, VitaWindowHandle};
 pub use web::{
     WebCanvasWindowHandle, WebDisplayHandle, WebOffscreenCanvasWindowHandle, WebWindowHandle,
 };
@@ -200,6 +202,11 @@ pub enum RawWindowHandle {
     /// ## Availability Hints
     /// This variant is used on HaikuOS.
     Haiku(HaikuWindowHandle),
+    /// A raw window handle for Sony Playstation Vita.
+    ///
+    /// ## Availability Hints
+    /// This variant is used on Sony Playstation Vita.
+    Vita(VitaWindowHandle),
 }
 
 /// Display that wraps around a raw display handle.
@@ -329,6 +336,11 @@ pub enum RawDisplayHandle {
     /// ## Availability Hints
     /// This variant is used on HaikuOS.
     Haiku(HaikuDisplayHandle),
+    /// A raw display handle for Sony Playstation Vita.
+    ///
+    /// ## Availability Hints
+    /// This variant is used on Sony Playstation Vita.
+    Vita(VitaDisplayHandle),
 }
 
 /// An error that can occur while fetching a display or window handle.
@@ -400,6 +412,7 @@ from_impl!(RawDisplayHandle, Windows, WindowsDisplayHandle);
 from_impl!(RawDisplayHandle, Web, WebDisplayHandle);
 from_impl!(RawDisplayHandle, Android, AndroidDisplayHandle);
 from_impl!(RawDisplayHandle, Haiku, HaikuDisplayHandle);
+from_impl!(RawDisplayHandle, Vita, VitaDisplayHandle);
 
 from_impl!(RawWindowHandle, UiKit, UiKitWindowHandle);
 from_impl!(RawWindowHandle, AppKit, AppKitWindowHandle);
@@ -420,3 +433,4 @@ from_impl!(
 );
 from_impl!(RawWindowHandle, AndroidNdk, AndroidNdkWindowHandle);
 from_impl!(RawWindowHandle, Haiku, HaikuWindowHandle);
+from_impl!(RawWindowHandle, Vita, VitaWindowHandle);
